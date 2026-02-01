@@ -1,0 +1,149 @@
+{
+  "$schema": "https://raw.githubusercontent.com/vicinaehq/vicinae/refs/heads/main/extra/schemas/extension.json",
+  "name": "obsidian",
+  "title": "Obsidian",
+  "description": "Search and open Obsidian notes",
+  "icon": "extension-icon.png",
+  "author": "andrewrabert",
+  "contributors": [],
+  "pastContributors": [],
+  "categories": [
+    "Productivity"
+  ],
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "search-notes",
+      "title": "Search Notes",
+      "subtitle": "Obsidian",
+      "description": "Search notes by path/title",
+      "mode": "view"
+    },
+    {
+      "name": "search-content",
+      "title": "Search Content",
+      "subtitle": "Obsidian",
+      "description": "Search within note contents",
+      "mode": "view"
+    },
+    {
+      "name": "create-note",
+      "title": "Create Note",
+      "subtitle": "Obsidian",
+      "description": "Create a new note",
+      "mode": "view"
+    },
+    {
+      "name": "daily-note",
+      "title": "Daily Note",
+      "subtitle": "Obsidian",
+      "description": "Open today's daily note",
+      "mode": "no-view"
+    },
+    {
+      "name": "add-to-daily",
+      "title": "Add to Daily Note",
+      "subtitle": "Obsidian",
+      "description": "Append content to today's daily note (requires Advanced URI plugin)",
+      "mode": "view"
+    }
+  ],
+  "preferences": [
+    {
+      "name": "vaultConfigPath",
+      "type": "textfield",
+      "title": "Vault Config Path",
+      "description": "Custom path to Obsidian config directory (overrides auto-detection)",
+      "required": false
+    },
+    {
+      "name": "excludedVaults",
+      "type": "textfield",
+      "title": "Excluded Vaults",
+      "description": "Comma-separated vault names to exclude from search",
+      "required": false
+    },
+    {
+      "name": "maxResults",
+      "type": "dropdown",
+      "title": "Max Results",
+      "description": "Maximum number of search results to display",
+      "default": "100",
+      "data": [
+        {
+          "title": "50",
+          "value": "50"
+        },
+        {
+          "title": "100",
+          "value": "100"
+        },
+        {
+          "title": "200",
+          "value": "200"
+        },
+        {
+          "title": "500",
+          "value": "500"
+        }
+      ],
+      "required": true
+    },
+    {
+      "name": "searchThreshold",
+      "type": "dropdown",
+      "title": "Search Threshold",
+      "description": "Fuse.js fuzzy search threshold (lower = stricter matching)",
+      "default": "0.4",
+      "data": [
+        {
+          "title": "0.2 (Strict)",
+          "value": "0.2"
+        },
+        {
+          "title": "0.4 (Balanced)",
+          "value": "0.4"
+        },
+        {
+          "title": "0.6 (Loose)",
+          "value": "0.6"
+        }
+      ],
+      "required": false
+    },
+    {
+      "name": "defaultVault",
+      "type": "textfield",
+      "title": "Default Vault",
+      "description": "Vault name for new notes (uses first vault if empty)",
+      "required": false
+    },
+    {
+      "name": "excludedFolders",
+      "type": "textfield",
+      "title": "Excluded Folders",
+      "description": "Comma-separated folder names to skip during indexing",
+      "required": false
+    },
+    {
+      "name": "dailyNotePrefix",
+      "type": "textfield",
+      "title": "Daily Note Prefix",
+      "description": "Prefix for content added to daily notes",
+      "default": "- [ ] ",
+      "required": false
+    }
+  ],
+  "dependencies": {
+    "@vicinae/api": "^0.15.5",
+    "fuse.js": "^7.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "build": "vici build",
+    "dev": "vici develop"
+  }
+}
